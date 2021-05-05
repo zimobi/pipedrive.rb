@@ -98,3 +98,6 @@ require 'pipedrive/user'
 
 # Pipelines
 require 'pipedrive/pipeline'
+
+# Item Search
+require 'pipedrive/item_search'
