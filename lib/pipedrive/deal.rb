@@ -10,7 +10,7 @@ module Pipedrive
     def list_participants(*args)
       params = args.extract_options!
       params.symbolize_keys!
-      id = params.delete(:id) || args[0]
+      id = params[:id] || args[0]
       raise 'id must be provided' unless id
 
       res = make_api_call(:get, "#{id}/participants")
@@ -21,7 +21,7 @@ module Pipedrive
     def add_participant(*args)
       params = args.extract_options!
       params.symbolize_keys!
-      id = params.delete(:id) || args[0]
+      id = params[:id] || args[0]
       raise 'id must be provided' unless id
 
       params[:person_id] ||= args[1]
@@ -33,10 +33,10 @@ module Pipedrive
     def delete_participant(*args)
       params = args.extract_options!
       params.symbolize_keys!
-      id = params.delete(:id) || args[0]
+      id = params[:id] || args[0]
       raise 'id must be provided' unless id
 
-      deal_participant_id = params.delete(:deal_participant_id) || args[1]
+      deal_participant_id = params[:deal_participant_id] || args[1]
       raise 'deal_participant_id must be provided' unless deal_participant_id
 
       make_api_call(:delete, "#{id}/participants/#{deal_participant_id}")
